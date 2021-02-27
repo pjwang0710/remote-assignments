@@ -6,14 +6,11 @@ def binary_search_position(numbers, target):
     while start_position != end_position:
         mid_position = (start_position + end_position) // 2
         if target == numbers[mid_position]:
-            start_position = mid_position
-            break
+            return mid_position
         elif target > numbers[mid_position]:
             start_position = mid_position + 1
         elif target < numbers[mid_position]:
             end_position = mid_position
-    if numbers[start_position] == target:
-        return start_position
     return -1       
 
 if __name__ == '__main__':
