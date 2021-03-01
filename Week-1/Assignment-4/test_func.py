@@ -16,19 +16,18 @@ def binary_search_recursive(numbers, start_position, end_position, target):
         return binary_search_recursive(numbers, start_position, mid_position, target)
 
 def bianry_search_iterative(numbers, target):
+    if len(numbers) == 0:
+        return -1
     start_position = 0
     end_position = len(numbers) - 1
-    while start_position != end_position:
+    while start_position <= end_position:
         mid_position = (start_position + end_position) // 2
         if target == numbers[mid_position]:
-            start_position = mid_position
-            break
+            return mid_position
         elif target > numbers[mid_position]:
             start_position = mid_position + 1
         elif target < numbers[mid_position]:
-            end_position = mid_position
-    if numbers[start_position] == target:
-        return start_position
+            end_position = mid_position - 1
     return -1
 
 def find_position_answer(numbers, target):
@@ -58,7 +57,7 @@ def binary_search_position(numbers, target):
 def get_random_array(array_length):
     random_array = []
     while len(random_array) < array_length:
-        rand_num = random.randint(-10000, 10000)
+        rand_num = random.randint(-10, 10)
         try:
             random_array.index(rand_num)
         except Exception as e:
@@ -69,7 +68,7 @@ def get_random_array(array_length):
 
 if __name__ == '__main__':
     for test_round in range(100):
-        rand_length = random.randint(10, 1000)
+        rand_length = random.randint(6, 10)
         random_array, random_target = get_random_array(rand_length)
         try:
             print(binary_search_position(random_array, random_target))
