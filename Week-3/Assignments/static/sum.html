@@ -1,0 +1,22 @@
+<html>
+   <head>
+      <!-- <script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'js/sum.js') }}" ></script> -->
+      <script>
+         function get_sum(){
+            var xhttp = new XMLHttpRequest();
+            number = document.getElementById('number').value
+            xhttp.open("GET", "http://localhost:3001/data?number="+number, false);
+            xhttp.send();
+            sum_number = xhttp.responseText;
+            document.getElementById('display').textContent = sum_number
+         }
+      </script>
+   </head>
+   
+   <body>
+       <p id="display"> </p>
+       <input type="text" id="number"> </input>
+       <button onclick="get_sum()"> submit</button>
+   </body>
+</html>
