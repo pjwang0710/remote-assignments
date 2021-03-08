@@ -13,7 +13,6 @@ def twoSum(nums, target):
     elif len(results) >= 2:
         raise ValueError(f'Got {len(results)} solutions')
     return results[0]
-    
 
 if __name__ == '__main__':
     # Time Complexity: O(n)
@@ -27,5 +26,3 @@ if __name__ == '__main__':
     print(twoSum([2, 7, 7, 15], 22))
     print(twoSum([7, 7, 2, 15], 9))
     print(twoSum([7, 7, 7, 15], 14))
-    
-        
