@@ -1,0 +1,50 @@
+<html>
+    <body>
+        <script>
+            function ajax(src, callback){
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", src, false);
+                xhttp.send(); 
+                data = xhttp.responseText;
+                callback(data);
+            }
+            function render(data){
+                json_data = JSON.parse(data)
+                
+                var section = document.createElement("section");
+                for (let i =0; i<json_data.length; i++){
+                    var p = document.createElement("p");
+                    p.textContent = "name: "+ json_data[i]["name"] + ", price: "+ json_data[i]["price"] + ", description: "+ json_data[i]["description"]
+                    section.appendChild(p);
+                }
+                document.getElementsByTagName("body")[0].appendChild(section);
+            }
+            ajax("http://13.113.12.180:4000/api/1.0/remote-w4-data", function(response){ 
+                render(response);
+            });
+            // ============= async await method =============
+            // function ajax(src){
+            //     var xhttp = new XMLHttpRequest();
+            //     xhttp.open("GET", src, false);
+            //     xhttp.send(); 
+            //     data = xhttp.responseText;
+            //     return data
+            // }
+            // async function render(src){
+            //     data = await ajax(src);
+            //     alert(data)
+            //     json_data = JSON.parse(data);
+                
+            //     var section = document.createElement("section");
+            //     for (let i =0; i<json_data.length; i++){
+            //         var p = document.createElement("p");
+            //         p.textContent = "name: "+ json_data[i]["name"] + ", price: "+ json_data[i]["price"] + ", description: "+ json_data[i]["description"]
+            //         section.appendChild(p);
+            //     }
+            //     document.getElementsByTagName("body")[0].appendChild(section);
+            // }
+            // render("http://13.113.12.180:4000/api/1.0/remote-w4-data");
+            
+        </script>
+    </body>
+</html>
